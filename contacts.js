@@ -62,7 +62,7 @@ async function removeContact(contactId) {
 async function addContact(name, email, phone) {
   try {
     const newContact = {
-      id: nanoid(),
+      id: nanoid(21),
       name,
       email,
       phone,
@@ -79,7 +79,7 @@ async function addContact(name, email, phone) {
     ) {
       return console.log(`Contact ${name} already exist on list`);
     } else {
-      contacts.push(newContact);
+      contactsParsed.push(newContact);
     }
 
     const updatedContacts = JSON.stringify(contacts, null, 2);
@@ -90,3 +90,10 @@ async function addContact(name, email, phone) {
     return console.log(error.message);
   }
 }
+
+module.exports = {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+};
