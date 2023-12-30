@@ -1,4 +1,5 @@
 import path from "path";
+import colors from "colors";
 import fs from "fs/promises";
 import { nanoid } from "nanoid";
 
@@ -19,13 +20,13 @@ async function getContactById(contactId) {
     const contacts = await fs.readFile(contactsPath);
     const contactsParsed = JSON.parse(contacts);
 
-    let getContact = `The contact with ID "${contactId}" does not exist.`;
+    let getContact = `The contact with ID "${contactId}" does not exist.`.red;
 
     contactsParsed.map((contact) => {
       if (contactId === contact.id) {
         getContact =
           ` Below are the contact details for id: "${contactId}"\n` +
-          `${contact.name}\n${contact.email}\n${contact.phone}`;
+          `${contact.name}\n${contact.email}\n${contact.phone}`.green;
       }
     });
 
@@ -47,11 +48,14 @@ async function removeContact(contactId) {
       contacts.splice(index, 1);
 
       const updatedContacts = JSON.stringify(contacts, null, 2);
-      console.log(`Contact "${contacts[index].name}" successfully removed`);
+      console.log(
+        `Contact "${contacts[index].name}" successfully removed`.green
+      );
       return fs.writeFile(contactsPath, updatedContacts);
     } else {
       return console.log(
         `The contact with ID "${contactId}" that you want to delete does not exist in your contacts.`
+          .red
       );
     }
   } catch (error) {
@@ -77,7 +81,7 @@ async function addContact(name, email, phone) {
           contact.name.toLowerCase() === newContact.name.toLowerCase()
       )
     ) {
-      return console.log(`Contact ${name} already exist on list`);
+      return console.log(`Contact ${name} already exist on list`.yellow);
     } else {
       contactsParsed.push(newContact);
     }
@@ -85,7 +89,7 @@ async function addContact(name, email, phone) {
     const updatedContacts = JSON.stringify(contacts, null, 2);
 
     fs.writeFile(contactsPath, updatedContacts);
-    return console.log(`Contact ${name} added successfully`);
+    return console.log(`Contact ${name} added successfully`.red);
   } catch (error) {
     return console.log(error.message);
   }
