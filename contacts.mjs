@@ -1,7 +1,3 @@
-// const path = require("path");
-// const fs = require("fs").promises;
-// const { nanoid } = require("nanoid");
-
 import path from "path";
 import fs from "fs/promises";
 import { nanoid } from "nanoid";
@@ -95,10 +91,4 @@ async function addContact(name, email, phone) {
   }
 }
 
-// module.exports = {
-//   listContacts,
-//   getContactById,
-//   removeContact,
-//   addContact,
-// };
 export { listContacts, getContactById, removeContact, addContact };
