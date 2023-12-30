@@ -4,7 +4,7 @@
 
 - [General Info](#general-information)
 - [Technologies Used](#technologies-used)
-- [Screenshots](#screenshots)
+- [Features](#features)
 - [Setup](#setup)
 - [Project Status](#project-status)
 - [Acknowledgements](#acknowledgements)
@@ -19,28 +19,45 @@
 
 Project is created with:
 
-- React - 18.1.0
-- Node.js v18.16.1
+![JavaScript](https://badges.aleen42.com/src/javascript.svg)
+![NodeJS](https://badges.aleen42.com/src/node.svg)
 
-## Screenshots
+## Features
 
+1.  LIST
+
+- To display a list of all contacts, use command:
+
+- node index.mjs --action list
+
+2. GET
+
+- To fetch detailed information about a specific contact, use the command along with its ID:
+
+- node index.mjs --action get --id CONTACT_ID
+
+3. ADD
+
+- To add a new contact, use the command:
+- node index.mjs --action add --name NAME --email EMAIL@EMAIL --phone 111-11-11
+
+4. REMOVE
+
+- To remove a contact based on its ID, use the command:
+- node index.js --action remove --id CONTACT_ID
 
 ## Setup
 
 Clone this repo to your desktop and run npm install to install all the dependencies.
-
-After that, You can run:
-
-- list  : node index.js --action list
-- find by id : node index.js --action get --id CONTACT_ID
-- add : node index.js --action add --name NAME --email EXAMPLE@EMAIL.COM --phone 111-11-11
-- remove : node index.js --action remove --id CONTACT_ID
 
 ## Project Status
 
 Project is: _finall_
 
 ## Acknowledgements
+
 - Many thanks for GoIT Team.
+
 ## Contact
+
 Feel free to contact with me: [@EmiliaWenta](https://www.linkedin.com/in/emilia-wenta-455782294/).

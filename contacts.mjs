@@ -1,5 +1,4 @@
 import path from "path";
-import colors from "colors";
 import fs from "fs/promises";
 import { nanoid } from "nanoid";
 
