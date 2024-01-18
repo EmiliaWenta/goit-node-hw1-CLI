@@ -77,17 +77,17 @@ async function addContact(name, email, phone) {
     if (
       contactsParsed.find(
         (contact) =>
-          contact.name.toLowerCase() === newContact.name.toLowerCase()
+          contact.name?.toLowerCase() === newContact.name?.toLowerCase()
       )
     ) {
-      return console.log(`Contact ${name} already exist on list`.yellow);
+      console.log(`Contact ${name} already exist on list`.yellow);
+      return;
     } else {
       contactsParsed.push(newContact);
     }
 
-    const updatedContacts = JSON.stringify(contacts, null, 2);
-
-    fs.writeFile(contactsPath, updatedContacts);
+    const updatedContacts = JSON.stringify(contactsParsed, null, 2);
+    await fs.writeFile(contactsPath, updatedContacts);
     return console.log(`Contact ${name} added successfully`.red);
   } catch (error) {
     return console.log(error.message);
