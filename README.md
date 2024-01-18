@@ -30,21 +30,29 @@ Project is created with:
 
 - node index.mjs --action list
 
+![](./images/list.PNG)
+
 2. GET
 
 - To fetch detailed information about a specific contact, use the command along with its ID:
 
 - node index.mjs --action get --id CONTACT_ID
 
+![](./images/get.PNG)
+
 3. ADD
 
 - To add a new contact, use the command:
 - node index.mjs --action add --name NAME --email EMAIL@EMAIL --phone 111-11-11
 
+![](./images/add.PNG)
+
 4. REMOVE
 
 - To remove a contact based on its ID, use the command:
 - node index.js --action remove --id CONTACT_ID
+
+![](./images/remove.PNG)
 
 ## Setup
 

@@ -19,13 +19,13 @@ async function getContactById(contactId) {
     const contacts = await fs.readFile(contactsPath);
     const contactsParsed = JSON.parse(contacts);
 
-    let getContact = `The contact with ID "${contactId}" does not exist.`.red;
+    let getContact = `The contact with ID "${contactId}" does not exist.`;
 
     contactsParsed.map((contact) => {
       if (contactId === contact.id) {
         getContact =
           ` Below are the contact details for id: "${contactId}"\n` +
-          `${contact.name}\n${contact.email}\n${contact.phone}`.green;
+          `${contact.name}\n${contact.email}\n${contact.phone}`;
       }
     });
 
@@ -44,17 +44,16 @@ async function removeContact(contactId) {
     );
 
     if (index > 0) {
-      contacts.splice(index, 1);
+      contactsParsed.splice(index, 1);
 
-      const updatedContacts = JSON.stringify(contacts, null, 2);
+      const updatedContacts = JSON.stringify(contactsParsed, null, 2);
       console.log(
-        `Contact "${contacts[index].name}" successfully removed`.green
+        `Contact "${contactsParsed[index].name}" successfully removed`
       );
       return fs.writeFile(contactsPath, updatedContacts);
     } else {
       return console.log(
         `The contact with ID "${contactId}" that you want to delete does not exist in your contacts.`
-          .red
       );
     }
   } catch (error) {
@@ -80,7 +79,7 @@ async function addContact(name, email, phone) {
           contact.name?.toLowerCase() === newContact.name?.toLowerCase()
       )
     ) {
-      console.log(`Contact ${name} already exist on list`.yellow);
+      console.log(`Contact ${name} already exist on list`);
       return;
     } else {
       contactsParsed.push(newContact);
@@ -88,7 +87,7 @@ async function addContact(name, email, phone) {
 
     const updatedContacts = JSON.stringify(contactsParsed, null, 2);
     await fs.writeFile(contactsPath, updatedContacts);
-    return console.log(`Contact ${name} added successfully`.red);
+    return console.log(`Contact ${name} added successfully`);
   } catch (error) {
     return console.log(error.message);
   }
